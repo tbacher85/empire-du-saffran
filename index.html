@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Empire du Safran | Souveraineté et Qualité pour la Haute Cuisine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root { --saffron: #B31B1B; --gold: #D4AF37; --ivory: #F8F5F0; --charcoal: #2C2C2C; --taupe: #A89987; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--charcoal); line-height: 1.6; overflow-x: hidden; }
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* Hero Section - Immersive & Lavish */
+        .hero {
+            min-height: 110vh;
+            background: linear-gradient(rgba(20, 20, 20, 0.75), rgba(20, 20, 20, 0.9)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 2rem;
+        }
+        .hero-content { max-width: 950px; z-index: 2; }
+        .hero h1 { font-size: 4.8rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: -0.5px; line-height: 1.05; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .hero .tagline { font-size: 2rem; color: var(--gold); margin-bottom: 2rem; font-weight: 500; letter-spacing: 4px; }
+        .hero-subtitle { font-size: 1.5rem; max-width: 750px; margin: 0 auto 3.5rem; font-weight: 300; opacity: 0.95; }
+
+        /* Problem Statement - Textured Luxury */
+        .problem-statement {
+            padding: 6rem 2rem;
+            background: 
+                linear-gradient(rgba(248, 245, 240, 0.92), rgba(248, 245, 240, 0.95)),
+                url('https://images.unsplash.com/photo-1515668236457-83c3b8764839?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=40');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            border-bottom: 1px solid rgba(168, 153, 135, 0.2);
+        }
+        .problem-statement h2 { font-size: 2.8rem; margin-bottom: 2rem; color: var(--saffron); }
+        .problem-statement > p { font-size: 1.3rem; max-width: 700px; margin: 0 auto; color: #444; }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 4rem auto 0;
+        }
+        .problem-card {
+            padding: 2.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: left;
+            transition: all 0.4s ease;
+        }
+        .problem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(179, 27, 27, 0.08);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        .problem-card h3 { color: var(--charcoal); margin-bottom: 1.2rem; font-size: 1.7rem; }
+
+        /* The Empire's Process - Saffron Field Majesty */
+        .empire-process {
+            padding: 7rem 2rem;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.92)),
+                url('https://images.unsplash.com/photo-1615485500557-4b5e7b4a5c5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=30');
+            background-size: cover;
+            background-position: center 60%;
+            background-attachment: fixed;
+            position: relative;
+        }
+        .section-title { text-align: center; font-size: 3.2rem; margin-bottom: 1rem; color: var(--charcoal); }
+        .section-subtitle { text-align: center; font-size: 1.3rem; color: var(--taupe); max-width: 650px; margin: 0 auto 5rem; }
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 5rem auto;
+        }
+        .process-step {
+            flex: 1;
+            min-width: 320px;
+            max-width: 400px;
+            text-align: center;
+            padding: 3rem 2.5rem;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(6px);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s ease;
+        }
+        .process-step:hover { 
+            transform: translateY(-12px) scale(1.02); 
+            box-shadow: 0 25px 50px rgba(179, 27, 27, 0.1);
+        }
+        .step-icon { font-size: 3.5rem; margin-bottom: 2rem; color: var(--gold); }
+        .step-title { font-size: 2rem; margin-bottom: 1.2rem; color: var(--saffron); }
+        .step-desc { color: #555; font-size: 1.1rem; line-height: 1.7; }
+
+        /* Saffron Gallery - Dark & Sensory */
+        .saffron-showcase { 
+            padding: 6rem 2rem; 
+            background: 
+                linear-gradient(rgba(20, 20, 20, 0.85), rgba(20, 20, 20, 0.9)),
+                url('https://images.unsplash.com/photo-1615485500607-1743dc7c96a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=40');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .splide__slide { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 3rem;
+            min-height: 500px;
+        }
+        .slide-content { 
+            max-width: 600px; 
+            text-align: center; 
+            background: rgba(30, 30, 30, 0.65);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+        .slide-content h3 { font-size: 2.3rem; margin-bottom: 1.5rem; color: var(--gold); }
+        .slide-content p { font-size: 1.2rem; opacity: 0.9; }
+        .splide__pagination__page.is-active { background: var(--gold) !important; transform: scale(1.2); }
+
+        /* Value Proposition & CTA - Ultimate Fine Dining Ambiance */
+        .value-cta {
+            padding: 7rem 2rem;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=50');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            color: white;
+        }
+        .value-prop { max-width: 850px; margin: 0 auto 5rem; }
+        .value-prop h2 { font-size: 3.2rem; margin-bottom: 2.5rem; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .value-prop p { font-size: 1.4rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+        .final-cta {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.85), rgba(40, 40, 40, 0.9));
+            backdrop-filter: blur(12px);
+            color: white;
+            padding: 5rem 3rem;
+            border-radius: 20px;
+            max-width: 950px;
+            margin: 0 auto;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+        .final-cta h3 { font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--gold); }
+        .final-cta > p { font-size: 1.3rem; opacity: 0.9; margin-bottom: 3rem; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+        /* Form Styling */
+        .signup-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 16px;
+            padding: 4rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .form-group { margin-bottom: 2rem; text-align: left; }
+        .form-group label { display: block; margin-bottom: 0.8rem; font-weight: 500; color: var(--gold); }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1.2rem;
+            border: 1px solid #555;
+            border-radius: 10px;
+            background: rgba(20, 20, 20, 0.7);
+            color: white;
+            font-size: 1.05rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+            background: rgba(30, 30, 30, 0.9);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to right, var(--saffron), #8B0000);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.4s;
+            margin-top: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .submit-btn:hover {
+            background: linear-gradient(to right, #8B0000, var(--saffron));
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(179, 27, 27, 0.3);
+            letter-spacing: 2px;
+        }
+        #form-message {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            display: none;
+            text-align: center;
+        }
+        .message-success { background: rgba(46, 125, 50, 0.2); color: #a5d6a7; border: 1px solid #2e7d32; }
+        .message-error { background: rgba(211, 47, 47, 0.2); color: #ef9a9a; border: 1px solid #d32f2f; }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            background: 
+                linear-gradient(rgba(15, 15, 15, 0.95), rgba(10, 10, 10, 1)),
+                url('https://images.unsplash.com/photo-1543353074-8b2f3d6b4a8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=20');
+            background-size: cover;
+            background-position: center;
+            color: #aaa;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .footer-logo { font-size: 2.5rem; color: var(--gold); margin-bottom: 1.5rem; }
+        footer p { max-width: 600px; margin: 0.8rem auto; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.8rem; }
+            .section-title { font-size: 2.8rem; }
+            .process-step { min-width: 100%; max-width: 500px; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero .tagline { font-size: 1.6rem; letter-spacing: 2px; }
+            .section-title { font-size: 2.4rem; }
+            .signup-form { padding: 2.5rem 2rem; }
+            .problem-card, .process-step { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION - LUXURY TABLE SETTING -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="serif">L'Empire du Safran</h1>
+            <p class="tagline serif">Souveraineté et Qualité</p>
+            <p class="hero-subtitle">La première plateforme qui garantit l'origine, la pureté absolue et la livraison irréprochable du safran Negin d'Iran pour les grandes tables d'Europe.</p>
+            <a href="#cta" class="submit-btn" style="width: auto; padding: 1.3rem 4rem; display: inline-block; font-size: 1.3rem;">Revendiquez Votre Échantillon Souverain</a>
+        </div>
+    </section>
+
+    <!-- THE PROBLEM - TEXTURED PAPER / PARCHMENT -->
+    <section class="problem-statement">
+        <h2 class="serif">L'Incertitude N'a Pas Sa Place en Haute Cuisine</h2>
+        <p>Derrière chaque filament de qualité douteuse se cachent un risque pour votre réputation et une insulte à votre art.</p>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <h3 class="serif">La Trahison de la Provenance</h3>
+                <p>Des origines floues, des mélanges frauduleux, des adultérations au colorant. Pouvez-vous vraiment raconter l'histoire de votre safran à votre client ?</p>
+            </div>
+            <div class="problem-card">
+                <h3 class="serif">L'Aléa de la Qualité</h3>
+                <p>Une couleur, un arôme, une puissance qui varient à chaque commande. L'inconstance qui compromet la perfection d'un plat signature.</p>
+            </div>
+            <div class="problem-card">
+                <h3 class="serif">Le Cauchemar Logistique</h3>
+                <p>Douanes, délais imprévisibles, paperasse interminable depuis l'Iran. Votre métier est de créer, pas de gérer des tracas administratifs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR EMPIRE'S PROCESS - SAFFRON FIELD -->
+    <section class="empire-process">
+        <h2 class="section-title serif">Notre Souveraineté en Trois Actes</h2>
+        <p class="section-subtitle">Nous régnons sur chaque étape pour vous offrir une quiétude absolue.</p>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-icon">👑</div>
+                <h3 class="step-title serif">1. Sourcing Impérial</h3>
+                <p class="step-desc">Notre couronne est ourdie dans le Khorasan iranien. Nous tissons des alliances directes avec des fermiers maîtres de leur art, sélectionnant uniquement les stigmates Negin, longs et cramoisis.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">🔬</div>
+                <h3 class="step-title serif">2. Le Sceau de la Science</h3>
+                <p class="step-desc">Chaque lot reçoit notre sceau : un certificat d'analyse indépendant (ISO 3632) validant le taux de crocine, de picocrocine et de safranal. La preuve chimique de son excellence.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">⚖️</div>
+                <h3 class="step-title serif">3. La Logistique Royale</h3>
+                <p class="step-desc">Depuis notre hub stratégique en Arménie, nous maîtrisons l'export et la livraison jusqu'à votre cuisine en UE. Un suivi transparent, des délais tenus. Votre sérénité, notre devoir.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAFFRON SHOWCASE - DARK & DRAMATIC -->
+    <section class="saffron-showcase">
+        <h2 class="section-title serif" style="color: var(--gold);">La Preuve par les Sens</h2>
+        <p class="section-subtitle" style="color: #ccc;">Découvrez la matière de notre empire.</p>
+        <div class="splide" id="saffron-slider">
+            <div class="splide__track">
+                <div class="splide__list">
+                    <div class="splide__slide">
+                        <div class="slide-content">
+                            <h3 class="serif">Negin Pur</h3>
+                            <p>Stigmates entiers, d'un rouge profond, libérant leur arôme complexe au simple contact de la chaleur. La grade des étoiles.</p>
+                        </div>
+                    </div>
+                    <div class="splide__slide">
+                        <div class="slide-content">
+                            <h3 class="serif">Traçabilité Totale</h3>
+                            <p>Chaque boîte est liée à un code. Scannez-le et voyagez jusqu'au champ d'origine, passez par le labo, suivez le trajet.</p>
+                        </div>
+                    </div>
+                    <div class="splide__slide">
+                        <div class="slide-content">
+                            <h3 class="serif">Le Kit du Connaisseur</h3>
+                            <p>Votre premier contact : un coffret contenant notre safran, son certificat, et l'accès à son histoire numérique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA & FORM - FINE DINING AMBIANCE -->
+    <section class="value-cta" id="cta">
+        <div class="value-prop">
+            <h2 class="serif">Vous N'Achetez Pas du Safran. Vous Acquérez de la Certitude.</h2>
+            <p>Notre valeur n'est pas dans une épice, mais dans l'<strong>abolition du doute</strong>. Nous transformons un ingrédient à risque en pilier fiable de votre carte.</p>
+            <p>Inscrivez-vous ci-dessous pour être contacté en priorité et recevoir <strong>votre Dossier d'Empire</strong> – un document détaillant notre processus, avec les preuves à l'appui – et les conditions pour obtenir votre premier kit d'évaluation.</p>
+        </div>
+        <div class="final-cta">
+            <h3 class="serif">Postulez pour un Accès Privilégié</h3>
+            <p>Cette offre est réservée aux chefs de maisons étoilées et aux acheteurs de maisons de renom. Limité aux 50 premières demandes.</p>
+            <form class="signup-form" id="imperial-form">
+                <div class="form-group">
+                    <label for="name">Nom & Prénom *</label>
+                    <input type="text" id="name" name="name" required placeholder="Votre nom">
+                </div>
+                <div class="form-group">
+                    <label for="title">Titre *</label>
+                    <select id="title" name="title" required>
+                        <option value="">Sélectionnez votre fonction</option>
+                        <option value="Chef">Chef / Chef Propriétaire</option>
+                        <option value="Sous-Chef">Sous-Chef</option>
+                        <option value="DirecteurAchat">Directeur des Achats</option>
+                        <option value="Importateur">Importateur Spécialisé</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="restaurant">Établissement / Entreprise *</label>
+                    <input type="text" id="restaurant" name="restaurant" required placeholder="Nom de votre restaurant ou société">
+                </div>
+                <div class="form-group">
+                    <label for="city">Ville & Pays *</label>
+                    <input type="text" id="city" name="city" required placeholder="ex : Paris, France">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Professionnel *</label>
+                    <input type="email" id="email" name="email" required placeholder="email@votre-restaurant.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Votre quête principale ? (Optionnel)</label>
+                    <input type="text" id="message" name="message" placeholder="Stabilité de la qualité ? Traçabilité ? Logistique simplifiée ?">
+                </div>
+                <button type="submit" class="submit-btn">SOUMETTRE MA DEMANDE D'ACCÈS</button>
+            </form>
+            <div id="form-message"></div>
+            <p style="margin-top: 2.5rem; font-size: 0.95rem; opacity: 0.7; font-style: italic;">Un conseiller impérial vous contactera sous 48 heures ouvrables pour un échange personnalisé.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-logo serif">L'Empire du Safran</p>
+        <p>Hub de Logistique, Qualité et Traçabilité | Opérant depuis Erevan, au service de la Haute Cuisine Européenne.</p>
+        <p>© 2023 L'Empire du Safran. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Initialize Splide.js Carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            new Splide('#saffron-slider', {
+                type: 'loop',
+                perPage: 1,
+                autoplay: true,
+                interval: 5000,
+                pauseOnHover: true,
+                arrows: true,
+                pagination: true,
+                speed: 800,
+            }).mount();
+        });
+
+        // GSAP Scroll Animations for Process Steps
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.process-step').forEach(step => {
+            gsap.from(step, {
+                scrollTrigger: {
+                    trigger: step,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 60,
+                opacity: 0,
+                duration: 1.2,
+                ease: "power3.out"
+            });
+        });
+
+        // Form Submission with Formspree
+        const form = document.getElementById('imperial-form');
+        const messageDiv = document.getElementById('form-message');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'ENVOI DE VOTRE REQUÊTE...';
+            submitBtn.disabled = true;
+
+            // 🔴 REMPLACEZ CE LIEN PAR VOTRE VRAI ENDPOINT FORMSPREE
+            const formspreeEndpoint = 'https://formspree.io/f/xqeavvjn';
+
+            const formData = new FormData(form);
+            try {
+                const response = await fetch(formspreeEndpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    // Success Animation
+                    gsap.fromTo(submitBtn, 
+                        { background: 'linear-gradient(to right, #2e7d32, #1b5e20)' },
+                        { duration: 0.5 }
+                    );
+                    messageDiv.textContent = '✅ Couronne réclamée avec succès ! Votre demande a été reçue. Un conseiller impérial vous contactera dans les 48 heures.';
+                    messageDiv.className = 'message-success';
+                    messageDiv.style.display = 'block';
+                    form.reset();
+                    // Smooth scroll to message
+                    gsap.to(window, {duration: 1.2, scrollTo: messageDiv});
+                } else {
+                    throw new Error('Erreur réseau');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                messageDiv.textContent = '❌ Un incident a retardé votre requête. Veuillez réessayer ou nous contacter directement.';
+                messageDiv.className = 'message-error';
+                messageDiv.style.display = 'block';
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Subtle parallax effect on hero
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            hero.style.backgroundPosition = 'center ' + (scrolled * 0.5) + 'px';
+        });
+    </script>
+</body>
+</html>
